@@ -1,6 +1,6 @@
 {
-  "title": "Network Traffic",
-  "description": "Access services running inside an environment",
+  "title": "Loki x Grafana",
+  "description": "Real-Time Log Monitoring with Loki and Grafana",
   "details": {
     "intro": {
       "text": "intro.md"
