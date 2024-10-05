@@ -1,17 +1,19 @@
+# Step 2: Run the docker containers
 
-Create a new file `/etc/my-second-file` with content `amazing`
+Now that we have the `docker-compose.yml` file configured, we can start the Loki, Promtail, and Grafana containers using the `docker-compose` command.
 
-<br>
+1. Run the following command to start the containers:
 
-### Solution
-We can use the command `echo`:
-
-```plain
-echo amazing > /etc/my-second-file
+```bash
+docker-compose up -d
 ```{{exec}}
 
-And to verify we can run
+This command will start the Loki, Promtail, and Grafana containers in detached mode, which means they will run in the background.
 
-```plain
-cat /etc/my-second-file
+2. To verify that the containers are running, you can use the following command:
+
+```bash
+docker ps
 ```{{exec}}
+
+This command will list all the running containers on your system. You should see the Loki, Promtail, and Grafana containers in the list.

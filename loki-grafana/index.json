@@ -3,24 +3,32 @@
   "description": "Real Time Monitoring with Loki and Grafana",
   "details": {
     "intro": {
-      "text": "intro.md",
-      "background": "setup.sh"
+      "text": "intro.md"
     },
     "steps": [
       {
-        "title": "Create an empty file",
-        "text": "step1/text.md",
-        "verify": "step1/verify.sh"
+        "title": "Write the docker-compose file",
+        "text": "step1/text.md"
       },
       {
-        "title": "Create a file with text",
-        "text": "step2/text.md",
-        "verify": "step2/verify.sh"
+        "title": "Run the docker containers",
+        "text": "step2/text.md"
       },
       {
-        "title": "Delete a file",
-        "text": "step3/text.md",
-        "verify": "step3/verify.sh"
+        "title": "Access Grafana and configure Loki as a data source",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Run the logging script",
+        "text": "step4/text.md"
+      },
+      {
+        "title": "Visualize logs in Grafana",
+        "text": "step5/text.md"
+      },
+      {
+        "title": "Filter Logs for Errors",
+        "text": "step6/text.md"
       }
     ],
     "finish": {
