@@ -27,20 +27,23 @@ fi
 
 # Function to log the message
 log_message() {
-    # Get the current timestamp
-    TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+    # Generate a random number between 1 and 100
+    RANDOM_NUMBER=$(( RANDOM % 100 ))
 
-    # Randomly decide which message to log
-    if (( RANDOM % 2 )); then
-        MESSAGE="spoon is the best"
-        STATUS="success"
-    else
+    # Determine the message and status based on probabilities
+    if (( RANDOM_NUMBER < 10 )); then
+        MESSAGE="spoon is not the best"
+        STATUS="super error"
+    elif (( RANDOM_NUMBER < 30 )); then
         MESSAGE="spoon is not the best"
         STATUS="error"
+    else
+        MESSAGE="spoon is the best"
+        STATUS="success"
     fi
 
     # Write the log entry to the log file
-    echo "$TIMESTAMP | $MESSAGE | $STATUS" >> "$LOG_FILE"
+    echo "$MESSAGE | $STATUS" >> "$LOG_FILE"
 }
 
 # Run the logging function every 5 seconds in the background
@@ -63,7 +66,7 @@ Now, the `log-generator.sh` script is ready to generate log messages that will b
 6. Run the script in the background:
 
 ```bash
-./log-generator.sh &
+.sudo /log-generator.sh &
 ```{{execute}}
 
 The script will start generating log messages every 5 seconds. These log messages will be stored in the `spoon.log` file located in the `/var/log` directory. Promtail will collect these log messages and send them to Loki for storage and visualization in Grafana.

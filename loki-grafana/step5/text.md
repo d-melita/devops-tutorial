@@ -9,7 +9,10 @@ In this step, we will create a dashboard in Grafana to visualize logs stored in 
 2. Select `Loki` as the data source for the dashboard. 
     ![](../assets/select-loki.png)
 
-3. In the query editor, you can write queries to filter and display logs from Loki. For example, you can use the following query to display logs from a specific log file:
+3. On the rigth side, under `Panel Options`, you can give your panel a title and a description. 
+       ![](../assets/all-spoon-logs.png)
+
+4. In the query editor, you can write queries to filter and display logs from Loki. For example, you can use the following query to display logs from a specific log file:
 
 ```json
 {filename="/var/log/spoon.log"}
@@ -18,14 +21,9 @@ In this step, we will create a dashboard in Grafana to visualize logs stored in 
 You can set this by either typing it in the `Code` tab or using the `Builder` tab to select the log file. And finally, click on `Run query` to see the logs.
    ![](../assets/query-builder.png)
 
-If in the `Panel Title` something like the following apperars, click on `Switch to Table` to see the logs in a table format.
+If in the Panel something like the following apperars, click on `Switch to Table` to see the logs in a table format.
    ![](../assets/panel-title.png)
 
-4. Finally, save the dashboard by clicking on the `Apply` button. 
-    ![](../assets/apply-dashboard.png)
-
-5. You can now see the logs from Loki displayed in the Grafana dashboard. You can customize the dashboard further by adding more panels, queries, and visualizations. Additionally, you can look at the logs with further detail and even select a specific time range to view the logs. You can do this as shown below:
-    ![](../assets/view.png)
-    ![](../assets/select-time-range.png)
+5. Finally, save the dashboard by clicking on the blue `Apply` button, on the top right corner.
 
 In the next step, we will add a new panel to the dashboard to visualize only the error logs.

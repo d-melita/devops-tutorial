@@ -69,4 +69,4 @@ In this file, we defined three services: `loki`, `promtail`, and `grafana`. Each
 
 - The `promtail` service uses the `grafana/promtail:2.9.10` image and mounts the `/var/log` directory from the host to collect logs.
 
-- The `grafana` service uses the `grafana/grafana:latest` image and exposes port `3000` to access the Grafana service. It also configures a datasource for Loki in the `ds.yaml` file.
+- The `grafana` service uses the `grafana/grafana:latest` image and exposes port `3000` to access the Grafana service.
