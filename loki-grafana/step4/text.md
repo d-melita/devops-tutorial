@@ -1,5 +1,3 @@
-# Step 4: Run the logging script
-
 Now, we will run a simple bash script that generates log messages. This script will write log messages to a file, which will be picked up by Promtail and sent to Loki for storage.
 
 1. Create a new file named `log-generator.sh` using the following command:

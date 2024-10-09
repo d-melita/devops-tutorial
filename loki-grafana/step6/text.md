@@ -1,5 +1,3 @@
-# Step 6: Filter Logs for Errors
-
 In this step, we will add a new panel to the Grafana dashboard to visualize only the error logs. 
 
 ### Add a new panel to the dashboard

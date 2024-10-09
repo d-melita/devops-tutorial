@@ -1,5 +1,3 @@
-# Step 5: Visualize logs in Grafana
-
 In this step, we will create a dashboard in Grafana to visualize logs stored in Loki. We will use the Loki data source to query logs and display them in a dashboard.
 
 ### Create a new dashboard

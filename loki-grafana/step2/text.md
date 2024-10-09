@@ -1,5 +1,3 @@
-# Step 2: Run the docker containers
-
 Now that we have the `docker-compose.yml` file configured, we can start the Loki, Promtail, and Grafana containers using the `docker-compose` command.
 
 1. Run the following command to start the containers:
