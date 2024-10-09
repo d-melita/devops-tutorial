@@ -31,7 +31,9 @@ Now your dashboard will not only display a panel with all logs but also a panel 
 Your dashboard should now look similar to the following:
    ![](../assets/dashboard-tables.png)
 
-6. You can now see the logs from Loki displayed in the Grafana dashboard. You can customize the dashboard further by adding more panels, queries, and visualizations. Additionally, you can look at the logs with further detail and even select a specific time range to view the logs. You can do this as shown below:
+6. You can now see the logs from Loki displayed in the Grafana dashboard. You can customize the dashboard further by adding more panels, queries, and visualizations. 
+
+Additionally, you can look at the logs with further detail and even select a specific time range to view the logs. You can do this by clicking on a panel's "three dots", on its top right corner, and then on `View`, as shown below:
     ![](../assets/view.png)
     <br>
     <br>
