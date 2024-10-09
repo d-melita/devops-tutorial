@@ -4,6 +4,9 @@ In this step, we will access the Grafana web interface and configure Loki as a d
 
 1. Open a web browser and navigate to [http://localhost:3000]({{TRAFFIC_HOST1_3000}}). You should see the Grafana login page.
 
+If by any chance you land on a page with an `Unauthorized` error message like the one above, just click on the `Sign in` button as shown. 
+![](../assets/unauthorized.png)
+
 2. Log in to Grafana using the default credentials:
    - **Username**: `admin`
     - **Password**: `admin`
