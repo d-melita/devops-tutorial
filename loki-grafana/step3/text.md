@@ -2,7 +2,7 @@ In this step, we will access the Grafana web interface and configure Loki as a d
 
 ### Access Grafana
 
-1. Open a web browser and navigate to [http://localhost:3000](https://56ba3acf-5b8e-4ae3-8146-bf7e43f3032d-10-244-6-237-3000.spch.r.killercoda.com/). You should see the Grafana login page.
+1. Open a web browser and navigate to [http://localhost:3000]({{TRAFFIC_HOST1_3000}}). You should see the Grafana login page.
 
 2. Log in to Grafana using the default credentials:
    - **Username**: `admin`
