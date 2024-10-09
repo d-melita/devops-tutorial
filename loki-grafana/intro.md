@@ -11,5 +11,5 @@ In this tutorial, we will set up a real-time log monitoring solution using Loki 
 ### Objectives
 
 By the end of this tutorial, you will have a fully functional log monitoring system that you can use to monitor logs from your applications and infrastructure. This system will help you quickly identify issues, troubleshoot problems, and improve the overall reliability of your systems.
-1
-![](../assets/lokiGrafana.png)
+
+![Grafana Loki](./assets/lokiGrafana.png)
