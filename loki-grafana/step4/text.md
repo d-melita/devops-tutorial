@@ -66,7 +66,7 @@ Now, the `log-generator.sh` script is ready to generate log messages that will b
 6. Run the script in the background:
 
 ```bash
-.sudo /log-generator.sh &
+sudo ./log-generator.sh &
 ```{{execute}}
 
 The script will start generating log messages every 5 seconds. These log messages will be stored in the `spoon.log` file located in the `/var/log` directory. Promtail will collect these log messages and send them to Loki for storage and visualization in Grafana.
