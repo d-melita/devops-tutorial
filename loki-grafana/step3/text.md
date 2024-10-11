@@ -1,33 +1,76 @@
-In this step, we will access the Grafana web interface and configure Loki as a data source. Grafana will use Loki to query and visualize logs stored in Loki.
+Now, we will run a simple bash script that generates log messages. This script will write log messages to a file, which will be picked up by Promtail and sent to Loki for storage.
 
-### Access Grafana
+1. Create a new file named `log-generator.sh` using the following command:
 
-1. Open a web browser and navigate to [http://localhost:3000]({{TRAFFIC_HOST1_3000}}). You should see the Grafana login page.
+```bash
+touch log-generator.sh
+```{{execute}}
 
-If by any chance you land on a page with an `Unauthorized` error message like the one below, just click on the `Sign in` button as shown. 
-![](../assets/unauthorized.png)
+2. Open the `log-generator.sh` file in a text editor:
 
-2. Log in to Grafana using the default credentials:
-   - **Username**: `admin`
-    - **Password**: `admin`
+```bash
+nano log-generator.sh
+```{{execute}}
 
-![](../assets/login.png)
+3. Add the following content to the `log-generator.sh` file:
 
-3. After logging in, you will be prompted to change the password. You can skip this or change it as per your preference.
+```bash
+#!/bin/bash
 
-### Configure Loki as a Data Source
+# Log file location
+LOG_FILE="/var/log/spoon.log"
 
-1. To add Loki as a data source there are two options:
-    - **Option 1**: Click directly on the shortcut in the main menu as shown below:
-    ![](../assets/directClick.png)
-    - **Option 2**: Click on the gear icon on the left sidebar, then click on `Connections` then `Data sources`, and finally "Add data source", as shown below:
-    ![](../assets/data-source-click.png)
+# Create the log file if it does not exist
+if [ ! -f "$LOG_FILE" ]; then
+    touch "$LOG_FILE"
+fi
 
-2. In the `Add data source` page, select `Loki` from the list of available data sources. It should be under the "Logging & document databases" section.
+# Function to log the message
+log_message() {
+    # Generate a random number between 1 and 100
+    RANDOM_NUMBER=$(( RANDOM % 100 ))
 
-3. In the `Connection` section, configure the `URL` field with the following value:
-   - `http://loki:3100`
-   ![](../assets/loki-url.png)
+    # Get the current timestamp
+    TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%S%z")
 
-4. Finally, scroll down and click on the `Save & Test` button to save the data source configuration and test the connection to Loki. A success message should appear if the connection is successful.
-![](../assets/save-and-test.png)
+    # Determine the message and status based on probabilities
+    if (( RANDOM_NUMBER < 10 )); then
+        MESSAGE="spoon is the worst"
+        STATUS="super_error"
+    elif (( RANDOM_NUMBER < 30 )); then
+        MESSAGE="spoon is ok"
+        STATUS="error"
+    else
+        MESSAGE="spoon is the best"
+        STATUS="success"
+    fi
+
+    # Write the log entry to the log file in structured format
+    echo "$TIMESTAMP level=$STATUS msg=\"$MESSAGE\"" >> "$LOG_FILE"
+}
+
+# Run the logging function every 5 seconds in the background
+while true; do
+    log_message
+    sleep 5
+done &
+
+```
+
+4. Save the file and exit the text editor.
+
+5. Make the script executable using the following command:
+
+```bash
+chmod +x log-generator.sh
+```{{execute}}
+
+Now, the `log-generator.sh` script is ready to generate log messages that will be picked up by Promtail and stored in Loki. Let's run the script in the background so that it continues to generate log messages.
+
+6. Run the script in the background:
+
+```bash
+sudo ./log-generator.sh &
+```{{execute}}
+
+The script will start generating log messages every 5 seconds. These log messages will be stored in the `spoon.log` file located in the `/var/log` directory. Promtail will collect these log messages and send them to Loki for storage and visualization in Grafana.
