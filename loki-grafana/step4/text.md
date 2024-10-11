@@ -30,20 +30,23 @@ log_message() {
     # Generate a random number between 1 and 100
     RANDOM_NUMBER=$(( RANDOM % 100 ))
 
+    # Get the current timestamp
+    TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%S%z")
+
     # Determine the message and status based on probabilities
     if (( RANDOM_NUMBER < 10 )); then
-        MESSAGE="spoon is not the best"
-        STATUS="super error"
+        MESSAGE="spoon is the worst"
+        STATUS="super_error"
     elif (( RANDOM_NUMBER < 30 )); then
-        MESSAGE="spoon is not the best"
+        MESSAGE="spoon is ok"
         STATUS="error"
     else
         MESSAGE="spoon is the best"
         STATUS="success"
     fi
 
-    # Write the log entry to the log file
-    echo "$MESSAGE | $STATUS" >> "$LOG_FILE"
+    # Write the log entry to the log file in structured format
+    echo "$TIMESTAMP level=$STATUS msg=\"$MESSAGE\"" >> "$LOG_FILE"
 }
 
 # Run the logging function every 5 seconds in the background
@@ -51,6 +54,7 @@ while true; do
     log_message
     sleep 5
 done &
+
 ```
 
 4. Save the file and exit the text editor.

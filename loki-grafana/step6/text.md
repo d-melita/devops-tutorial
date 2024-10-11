@@ -5,10 +5,11 @@ In this step, we will add a new panel to the Grafana dashboard to visualize only
 1. In the Dashboard view, click on `Add` and then select `Visualization`, as shown below:
    ![](../assets/add-new-visualization.png)
 
-2. Once again add a title and a description to the panel
+2. Once again make sure the visualization type is of type `Logs` and add a title and a description to the panel
    ![](../assets/spoon-error-logs.png)
 
 3. To filter logs that contain the word "error", the process to write the query is similar to the previous step. However, this time we will add a filter to only show logs that contain the word "error". You can use the following query to filter logs that contain the word "error", writing it in the `Code` tab:
+
 ```json
 {filename="/var/log/spoon.log"} |= "error"
 ```
@@ -18,9 +19,12 @@ Alternatively, you can use the `Builder` tab to select the log file and add the 
 
 This query will filter logs that contain the word "error" from the specified log file.
 
-4. Click on `Run query` to see the logs that match the filter. If necessray, click on the `Switch to Table`. If you see the logs displayed correctly, click on `Apply` to save the panel.
+4. Click on `Run query` to see the logs that match the filter. It should look like the image below. If so, click on `Apply` to save the query.
+   ![](../assets/query-results-error.png)
 
-5. To save the dashboard, click on the file icon, as shown below. 
+   <br>
+
+5. Now, let's save the dashboar. To do so, click on the file icon, as shown below. 
    ![](../assets/save-dashboard.png)
 
 Provide a name for the dashboard. You can also add a description if you want. Finally, click on `Save` to save the dashboard.
@@ -29,15 +33,6 @@ Provide a name for the dashboard. You can also add a description if you want. Fi
 Now your dashboard will not only display a panel with all logs but also a panel that filters logs for errors. You can further customize the dashboard by adding more panels, queries, and visualizations. 
 
 Your dashboard should now look similar to the following:
-   ![](../assets/dashboard-tables.png)
-
-6. You can now see the logs from Loki displayed in the Grafana dashboard. You can customize the dashboard further by adding more panels, queries, and visualizations. 
-
-Additionally, you can look at the logs with further detail and even select a specific time range to view the logs. You can do this by clicking on a panel's "three dots", on its top right corner, and then on `View`, as shown below:
-    ![](../assets/view.png)
-    <br>
-    <br>
-    <br>
-    ![](../assets/select-time-range.png)
+   ![](../assets/dashboard-logs.png)
 
 In the next step, we will set up alerts in Grafana to notify you when specific log messages are detected.
