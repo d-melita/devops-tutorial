@@ -1,3 +1,5 @@
+Before we start, we recommed you to expand this side panel a bit to better view the images of the next steps.
+
 In this step, we’ll create a docker-compose.yaml file that will define three services: Loki, Promtail, and Grafana. Each service plays a crucial role in the setup:
 
 - **Loki**: Loki is the log aggregation service that will store logs.

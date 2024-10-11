@@ -41,7 +41,6 @@ It should look like this:
     ![](../assets/remove-b.png) 
 
 9. Now, make sure your `Threshold` is set as shown below. This means that the alert will trigger when more than 5 `super error`s are detected in the logs.
-
     ![](../assets/five.png)
 
 By clicking on `Preview` you can see how the alert would behave. It can either be `Firing`, as in the image, or `Normal`.
