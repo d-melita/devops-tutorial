@@ -16,7 +16,6 @@ In this step, we will create a dashboard in Grafana to visualize logs stored in 
     ![](../assets/logs.png)
 
 4. Below that, under `Panel Options`, you can give your panel a title and a description. 
-
        ![](../assets/all-spoon-logs.png)
 
 4. In the query editor, you can write queries to filter and display logs from Loki. For example, you can use the following query to display logs from a specific log file:

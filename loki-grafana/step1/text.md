@@ -1,6 +1,6 @@
 Before we start, we recommed you to expand this side panel a bit to better view the images of the next steps.
 
-In this step, we’ll create a docker-compose.yaml file that will define three services: Loki, Promtail, and Grafana. Each service plays a crucial role in the setup:
+In this step, we’ll create a docker-compose.yml file that will define three services: Loki, Promtail, and Grafana. Each service plays a crucial role in the setup:
 
 - **Loki**: Loki is the log aggregation service that will store logs.
 - **Promtail**: Promtail is the agent that will collect logs from your system and forward them to Loki.
@@ -21,13 +21,7 @@ cd loki-grafana
 touch docker-compose.yml
 ```{{exec}}
 
-3. Open the `docker-compose.yml` file in a text editor:
-
-```bash
-nano docker-compose.yml
-```{{exec}}
-
-4. Add the following content to the `docker-compose.yml` file:
+3. Open the `docker-compose.yml` file in a text editor of your choice and add the following content:
 
 ```yaml
 version: "3"
@@ -61,9 +55,9 @@ services:
       - "3000:3000"
     networks:
       - loki
-```
+```{{copy}}
 
-5. Save and close the file by pressing `Ctrl + X`, then `Y`, and then `Enter`.
+4. Save and close the file.
 
 In this file, we defined three services: `loki`, `promtail`, and `grafana`. Each service is configured with the necessary settings to run the Loki, Promtail, and Grafana containers.
 
