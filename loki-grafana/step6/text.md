@@ -24,7 +24,7 @@ This query will filter logs that contain the word "error" from the specified log
 
    <br>
 
-5. Now, let's save the dashboar. To do so, click on the file icon, as shown below. 
+5. Now, let's save the dashboard. To do so, click on the file icon, as shown below. 
    ![](../assets/save-dashboard.png)
 
 Provide a name for the dashboard. You can also add a description if you want. Finally, click on `Save` to save the dashboard.

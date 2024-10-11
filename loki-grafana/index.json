@@ -29,6 +29,10 @@
       {
         "title": "Filter Logs for Errors",
         "text": "step6/text.md"
+      },
+      {
+        "title": "Add Alert Rule",
+        "text": "step7/text.md"
       }
     ],
     "finish": {
