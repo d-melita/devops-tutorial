@@ -1,4 +1,4 @@
-Before we start, we recommed you to expand this side panel a bit to better view the images of the next steps.
+Before we start, we recommend you to expand this side panel a bit to better view the images of the next steps.
 
 In this step, we’ll create a docker-compose.yml file that will define three services: Loki, Promtail, and Grafana. Each service plays a crucial role in the setup:
 
