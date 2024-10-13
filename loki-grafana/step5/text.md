@@ -7,33 +7,32 @@ In this step, we will create a dashboard in Grafana to visualize logs stored in 
    ![](../assets/dashboard.png)
    ![](../assets/4th-dashboard.png)
 
-2. Select `Loki` as the data source for the dashboard. 
+2. Select `Loki` as the data source for the dashboard.
 
-    ![](../assets/select-loki.png)
+   ![](../assets/select-loki.png)
 
 3. Make sure your visualization is of type `Logs`. You can set this on the top right site, just below the `Discard`, `Save`, and `Apply` buttons.
 
-    ![](../assets/logs.png)
+   ![](../assets/logs.png)
 
-4. Below that, under `Panel Options`, you can give your panel a title and a description. 
-       ![](../assets/all-spoon-logs.png)
+4. Below that, under `Panel Options`, you can give your panel a title and a description.
 
-4. In the query editor, you can write queries to filter and display logs from Loki. For example, you can use the following query to display logs from a specific log file:
+   ![](../assets/all-spoon-logs.png)
 
-```json
-{filename="/var/log/spoon.log"}
-```
+5. In the query editor, you can write queries to filter and display logs from Loki. For example, you can use the following query to display logs from a specific log file:
 
-You can set this by either typing it in the `Code` tab or using the `Builder` tab to select the log file. And finally, click on `Run query` to see the logs.
+   ```json
+   {filename="/var/log/spoon.log"}
+   ```
+
+   You can set this by either typing it in the `Code` tab or using the `Builder` tab to select the log file. And finally, click on `Run query` to see the logs.
 
    ![](../assets/query-builder.png)
 
-   <br>
-
-Something like this should appear above the query editor:
+   Something like this should appear above the query editor:
 
    ![](../assets/query-results.png)
 
-5. Finally, save the dashboard by clicking on the blue `Apply` button, on the top right corner.
+6. Finally, save the dashboard by clicking on the blue `Apply` button, on the top right corner.
 
 In the next step, we will add a new panel to the dashboard to visualize only the error logs.

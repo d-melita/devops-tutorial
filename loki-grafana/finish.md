@@ -1,6 +1,3 @@
-
-<br>
-
 ### Congratulations!
 
 You have successfully set up Loki and Grafana to visualize and monitor logs. You have learned how to query logs in Loki, create a dashboard in Grafana, and set up alerts to notify you when specific log messages are detected. This will help you to quickly identify issues and take action when necessary. You can further customize the dashboard and alerts by adding more panels, queries, and visualizations. You can either create more alerts or customize the existing ones to better suit your needs.
