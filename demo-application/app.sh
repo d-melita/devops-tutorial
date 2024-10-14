@@ -17,7 +17,7 @@ log_message() {
         STATUS="warning"
     else
         MESSAGE="spoon is the best"
-        STATUS="success"
+        STATUS="info"
     fi
 
     # Output the log entry to stdout
