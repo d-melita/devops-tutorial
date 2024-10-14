@@ -1,0 +1,30 @@
+direction: down
+mon-host: "Monitoring Host" {
+  loki: "Loki" {
+    icon: "https://grafana.com/static/img/logos/logo-loki.svg"
+  }
+  grafana: "Grafana" {
+    icon: "https://grafana.com/media/docs/grafana-cloud/infrastructure/grafanalogo.svg"
+  }
+
+  loki -> grafana
+}
+app-host1: "Application Host 1" {
+  promtail: "Promtail"
+  app1: "App 1"
+  app2: "App 2"
+
+  promtail <- app1
+  promtail <- app2
+}
+app-host2: "Application Host 2" {
+  promtail: "Promtail"
+  app1: "App 1"
+  app2: "App 2"
+
+  promtail <- app1
+  promtail <- app2
+}
+
+mon-host.loki <- app-host1.promtail
+mon-host.loki <- app-host2.promtail

@@ -1,68 +1,67 @@
-Before we start, we recommend you to expand this side panel a bit to better view the images of the next steps.
+Before you start, we recommend you to expand this side panel a bit to better
+view the images of the next steps.
 
-In this step, we’ll create a docker-compose.yml file that will define three services: Loki, Promtail, and Grafana. Each service plays a crucial role in the setup:
+In this step, you will learn how to deploy [Loki] and [Grafana] with Docker Compose.
+The former is a **log aggregation service**, which received and stores logs from various sources,
+while the latter is a **visualization and monitoring tool**, which will be used to keep track of
+the logs and send alerts when certain criteria is met.
 
-- **Loki**: Loki is the log aggregation service that will store logs.
-- **Promtail**: Promtail is the agent that will collect logs from your system and forward them to Loki.
-- **Grafana**: Grafana will be used to visualize logs stored in Loki.
+1. Start by creating a new directory for your deployment and navigate to it:
 
-
-
-1. Start by creating a new directory for your project and navigate to it:
-
-```bash
-mkdir loki-grafana
-cd loki-grafana
-```{{exec}}
+    ```bash
+    mkdir loki-grafana
+    cd loki-grafana
+    ```{{exec}}
 
 2. Create a new file named `docker-compose.yml`:
 
-```bash
-touch docker-compose.yml
-```{{exec}}
+    ```bash
+    touch docker-compose.yml
+    ```{{exec}}
 
-3. Open the `docker-compose.yml` file in a text editor of your choice and add the following content:
+3. Open the `docker-compose.yml` file in a text editor of your choice
+   (for simplicity, use the built-in editor of KillerCoda) and add the following content:
 
-```yaml
-version: "3"
+    ```yaml
+    version: "3"
 
-networks:
-  loki:
+    services:
+      grafana:
+        image: grafana/grafana:11.2.2
+        ports:
+          - "3000:3000"
+        volumes:
+          - grafana-storage:/var/lib/grafana
+        networks:
+          - loki
+      loki:
+        image: grafana/loki:3.2.0
+        volumes:
+          - loki-storage:/loki
+        networks:
+          - loki
 
-services:
-  loki:
-    image: grafana/loki:2.9.10
-    ports:
-      - "3100:3100"
-    command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - loki
+      loki:
 
-  promtail:
-    image: grafana/promtail:2.9.10
     volumes:
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/config.yml
-    networks:
-      - loki
+      grafana-storage:
+      loki-storage:
+    ```{{copy}}
 
-  grafana:
-    environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"
-    networks:
-      - loki
-```{{copy}}
+    This configuration creates two services, Grafana (version 11.2.2) and Loki (version 3.2.0),
+    and persists their data across restarts (see `volumes`).
 
 4. Save and close the file.
 
-In this file, we defined three services: `loki`, `promtail`, and `grafana`. Each service is configured with the necessary settings to run the Loki, Promtail, and Grafana containers.
+In this file, you defined two services: `loki` (using version 3.2.) and `grafana`
+(using version 11.2.2).
+Each service is configured to persist their data across restarts through
+[Docker volumes][docker-volumes].
+Port 3000 of the Grafana container is [exposed][docker-ports] to allow for external
+access to the dashboard.
 
-- The `loki` service uses the `grafana/loki:2.9.10` image and exposes port `3100` to access the Loki service.
-
-- The `promtail` service uses the `grafana/promtail:2.9.10` image and mounts the `/var/log` directory from the host to collect logs.
-
-- The `grafana` service uses the `grafana/grafana:latest` image and exposes port `3000` to access the Grafana service.
+[Loki]: https://grafana.com/oss/loki/
+[Grafana]: https://grafana.com/oss/grafana/
+[docker-volumes]: https://docs.docker.com/reference/compose-file/volumes/
+[docker-ports]: https://docs.docker.com/reference/compose-file/services/#ports

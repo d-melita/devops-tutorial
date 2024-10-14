@@ -7,19 +7,19 @@
     },
     "steps": [
       {
-        "title": "Write the docker-compose file",
+        "title": "Setting up Loki and Grafana",
         "text": "step1/text.md"
       },
       {
-        "title": "Run the docker containers",
+        "title": "Setting up Promtail and a sample application",
         "text": "step2/text.md"
       },
       {
-        "title": "Access Grafana and configure Loki as a data source",
+        "title": "Starting all containers",
         "text": "step3/text.md"
       },
       {
-        "title": "Run the logging script",
+        "title": "Configuring Loki as a data source",
         "text": "step4/text.md"
       },
       {

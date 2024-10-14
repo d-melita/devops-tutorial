@@ -1,70 +1,38 @@
-Now, we will run a simple bash script that generates log messages. This script will write log messages to a file, which will be picked up by Promtail and sent to Loki for storage.
+Now that we have the `docker-compose.yml` file configured, we can start
+all four containers using the `docker-compose` command.
 
-1. Create a new file named `log-generator.sh` using the following command:
+1. Run the following command to start the containers:
 
-```bash
-touch log-generator.sh
-```{{execute}}
+   ```bash
+   docker-compose up -d
+   ```{{exec}}
 
-2. Open the `log-generator.sh` file in a text editor of your choice and add the following content:
+   This command starts Loki, Promtail, Grafana and the sample application
+   in detached mode, which means they will run in the background.
 
-```bash
-#!/bin/bash
+2. To verify that the containers are running, you can use the following command:
 
-# Log file location
-LOG_FILE="/var/log/spoon.log"
+   ```bash
+   docker ps
+   ```{{exec}}
 
-# Create the log file if it does not exist
-if [ ! -f "$LOG_FILE" ]; then
-    touch "$LOG_FILE"
-fi
+   This command lists all the running containers on your system.
+   You should see all four containers in the list, as below.
 
-# Function to log the message
-log_message() {
-    # Generate a random number between 1 and 100
-    RANDOM_NUMBER=$(( RANDOM % 100 ))
+   ```
+   CONTAINER ID   IMAGE                                   COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+   5ef6b692ce03   grafana/grafana:11.2.2                  "/run.sh"                21 seconds ago   Up 15 seconds   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   loki-grafana-grafana-1
+   1aa92a70aec1   ghcr.io/d-melita/devops-tutorial:edge   "docker-entrypoint.s…"   21 seconds ago   Up 15 seconds                                               spoon-app
+   3f3ba62c084b   grafana/promtail:3.2.0                  "/usr/bin/promtail -…"   21 seconds ago   Up 15 seconds                                               loki-grafana-promtail-1
+   d0df40edc9f7   grafana/loki:3.2.0                      "/usr/bin/loki -conf…"   21 seconds ago   Up 15 seconds   3100/tcp                                    loki-grafana-loki-1
+   ```
 
-    # Get the current timestamp
-    TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%S%z")
+That is all, you have now successfully started all four containers!
 
-    # Determine the message and status based on probabilities
-    if (( RANDOM_NUMBER < 10 )); then
-        MESSAGE="spoon is the worst"
-        STATUS="super_error"
-    elif (( RANDOM_NUMBER < 30 )); then
-        MESSAGE="spoon is ok"
-        STATUS="error"
-    else
-        MESSAGE="spoon is the best"
-        STATUS="success"
-    fi
-
-    # Write the log entry to the log file in structured format
-    echo "$TIMESTAMP level=$STATUS msg=\"$MESSAGE\"" >> "$LOG_FILE"
-}
-
-# Run the logging function every 5 seconds in the background
-while true; do
-    log_message
-    sleep 5
-done &
-
-```{{copy}}
-
-3. Save the file and exit the text editor.
-
-4. Make the script executable using the following command:
+Before proceeding, take a look at the logs we will be importing into Grafana:
 
 ```bash
-chmod +x log-generator.sh
-```{{execute}}
+docker-compose logs spoon-app
+```
 
-Now, the `log-generator.sh` script is ready to generate log messages that will be picked up by Promtail and stored in Loki. Let's run the script in the background so that it continues to generate log messages.
-
-5. Run the script in the background:
-
-```bash
-./log-generator.sh &
-```{{execute}}
-
-The script will start generating log messages every 5 seconds. These log messages will be stored in the `spoon.log` file located in the `/var/log` directory. Promtail will collect these log messages and send them to Loki for storage and visualization in Grafana.
+In the next step, you will login into Grafana and configure Loki as a data source.

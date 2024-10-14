@@ -1,0 +1,16 @@
+direction: right
+mon-host: "Host" {
+  loki: "Loki" {
+    icon: "https://grafana.com/static/img/logos/logo-loki.svg"
+  }
+  grafana: "Grafana" {
+    icon: "https://grafana.com/media/docs/grafana-cloud/infrastructure/grafanalogo.svg"
+  }
+
+  promtail: "Promtail"
+  app1: "Application"
+
+  loki -> grafana
+  promtail -> loki
+  promtail <- app1
+}
