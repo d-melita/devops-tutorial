@@ -6,7 +6,7 @@ Unlike Loki and Grafana, Promtail can and should be deployed in all machines who
 want to ingest.
 An example of a real-world setup is this:
 
-![Log flow in a real application](../assets/log-flow-complete.svg)
+![Log flow in a real application](../assets/log-flow-complete.png)
 
 The arrows in the diagram indicate how the logs flow through the system.
 
@@ -15,7 +15,7 @@ of this setup, putting just a single application in the same host as Loki
 and Grafana.
 Therefore, you will be building this:
 
-![Log flow in this tutorial](../assets/log-flow-tutorial.svg)
+![Log flow in this tutorial](../assets/log-flow-tutorial.png)
 
 Now, you will add both Promtail and a sample application to your Docker Compose configuration.
 
@@ -68,8 +68,8 @@ Now, you will add both Promtail and a sample application to your Docker Compose 
          - loki
    ```{{copy}}
 
-   Here, we are mounting both the Promtail config that we just created and the socket for
-   the Docker daemon, allowing Promtail to query logs from Docker.
+   Here, we are mounting both the Promtail config that we just created (as read-only) and the
+   socket for the Docker daemon, allowing Promtail to query logs from Docker.
 
 6. Also under `services`, add a sample application:
 

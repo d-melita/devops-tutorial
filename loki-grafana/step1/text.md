@@ -49,16 +49,13 @@ the logs and send alerts when certain criteria is met.
       loki-storage:
     ```{{copy}}
 
-    This configuration creates two services, Grafana (version 11.2.2) and Loki (version 3.2.0),
-    and persists their data across restarts (see `volumes`).
-
 4. Save and close the file.
 
-In this file, you defined two services: `loki` (using version 3.2.) and `grafana`
+In this file, you defined two services: `loki` (using version 3.2.0) and `grafana`
 (using version 11.2.2).
 Each service is configured to persist their data across restarts through
 [Docker volumes][docker-volumes].
-Port 3000 of the Grafana container is [exposed][docker-ports] to allow for external
+Additionally, port 3000 of the Grafana container is [exposed][docker-ports] to allow for external
 access to the dashboard.
 
 [Loki]: https://grafana.com/oss/loki/

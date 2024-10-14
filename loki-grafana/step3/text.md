@@ -33,6 +33,6 @@ Before proceeding, take a look at the logs we will be importing into Grafana:
 
 ```bash
 docker-compose logs spoon-app
-```
+```{{exec}}
 
 In the next step, you will login into Grafana and configure Loki as a data source.
