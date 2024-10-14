@@ -66,11 +66,16 @@ This will help us to quickly identify issues and take action when necessary.
 
    ![](../assets/new-folder.png)
 
-10. For the evaluation group and interval, create a new one and set the `Evaluation Interval` to `10s`. The pending period should be set to `None` so the alert is triggered as soon as the condition is met. Your `Evaluation behavior` should look like this:
+10. For the evaluation group and interval, create a new one and set the `Evaluation interval`
+    to `10s`.
+    The pending period should be set to `None` so the alert is triggered as soon as the
+    condition is met.
+    Your `Evaluation behavior` should look like this:
 
     ![](../assets/evaluation.png)
 
-11. For `Configuring Labels and Notifications`, set the `Contact Point` to the Webhook previously created.
+11. For `Configuring labels and notifications`, set the `Contact point` to the Webhook previously
+    created.
 
     ![](../assets/contact-point.png)
 
