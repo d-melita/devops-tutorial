@@ -11,7 +11,7 @@ In this step, we will create a dashboard in Grafana to visualize logs stored in 
 
    ![](../assets/select-loki.png)
 
-3. Make sure your visualization is of type `Logs`. You can set this on the top right site, just below the `Discard`, `Save`, and `Apply` buttons.
+3. Make sure your visualization is of type `Logs`. You can set this on the top right side, just below the `Discard`, `Save`, and `Apply` buttons.
 
    ![](../assets/logs.png)
 
