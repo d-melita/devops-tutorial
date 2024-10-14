@@ -25,7 +25,8 @@ and error logs.
 
    ![](../assets/query-builder-error.png)
 
-   This query will filter logs that contain the word "error" from the specified log file.
+   This query will filter logs of the specified container to only show those of level
+   warning or error.
 
 4. Click on `Run query` to see the logs that match the filter.
    It should look like the image below.
