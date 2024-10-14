@@ -42,7 +42,7 @@ This will help us to quickly identify issues and take action when necessary.
 6. Next, change the query type to `Code` and write the following query:
 
    ```
-   count(rate({container="spoon-app"} | logfmt | level = `error` [5m]))
+   count(rate({container="spoon-app"} | logfmt | level = `error`{{}} [5m]))
    ```{{copy}}
 
    Alternatively, you can use the `Builder` tab to select the right container and
